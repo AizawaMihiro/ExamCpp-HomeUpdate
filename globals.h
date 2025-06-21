@@ -15,6 +15,10 @@ namespace {
 	const int BEAM_IMAGE_HEIGHT = 21;
 
 	const float ENEMY_MOVE_SPEED = 1.0f;
+	enum State
+	{
+		TITLE, GAME, OVER, MUX_STATE
+	};
 }
 extern float gDeltaTime;//ƒtƒŒ[ƒ€ŠÔ‚ÌŠÔ·
 

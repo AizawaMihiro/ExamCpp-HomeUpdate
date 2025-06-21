@@ -3,6 +3,9 @@
 #include "Input.h"
 #include <vector>
 #include "Stage.h"
+#include "TitleScene.h"
+#include "GameScene.h"
+#include "OverScene.h"
 
 namespace {
 	const int BG_COLOR[3] = { 0,0,0};
@@ -19,7 +22,7 @@ void DxInit()
 {
 	ChangeWindowMode(true);
 	SetWindowSizeChangeEnableFlag(false, false);
-	SetMainWindowText("TITLE");
+	SetMainWindowText("ShootingGame");
 	SetGraphMode(WIN_WIDTH, WIN_HEIGHT, 32);
 	SetWindowSizeExtendRate(1.0);
 	SetBackgroundColor(BG_COLOR[0],BG_COLOR[1],BG_COLOR[2]);
@@ -52,7 +55,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	crrTime = GetNowCount();
 	prevTime = GetNowCount();
 
-	Stage* stage = new Stage();
+	Stage stage;
+	State GameState = GAME;
 
 	while (true)
 	{
@@ -64,6 +68,19 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 		//‚±‚±‚É‚â‚è‚½‚¢ˆ—‚ð‘‚­
+		switch (GameState)
+		{
+		case State::TITLE:
+			break;
+		case State::GAME:
+			break;
+		case State::OVER:
+			break;
+		case State::MUX_STATE:
+		default:
+			break;
+		}
+
 
 		if (newObjects.size() > 0) {
 			for (auto& obj : newObjects)
