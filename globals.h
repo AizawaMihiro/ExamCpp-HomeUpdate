@@ -1,0 +1,40 @@
+#pragma once
+
+const int WIN_WIDTH = 1024;
+const int WIN_HEIGHT = 768;
+
+namespace {
+
+	const int PLAYER_IMAGE_WIDTH = 48;
+	const int PLAYER_IMAGE_HEIGHT = 48;
+	const int BULLET_IMAGE_WIDTH = 13;
+	const int BULLET_IMAGE_HEIGHT = 33;
+	const int ENEMY_IMAGE_WIDTH = 48;
+	const int ENEMY_IMAGE_HEIGHT = 48;
+	const int BEAM_IMAGE_WIDTH = 11;
+	const int BEAM_IMAGE_HEIGHT = 21;
+
+	const float ENEMY_MOVE_SPEED = 1.0f;
+}
+extern float gDeltaTime;//ÉtÉåÅ[ÉÄä‘ÇÃéûä‘ç∑
+
+inline float GetDeltaTime() {
+	return gDeltaTime;
+}
+
+struct Point {
+	float x;
+	float y;
+};
+
+struct Rect {
+	float x;
+	float y;
+	float w;
+	float h;
+
+	inline Point GetCenter() const
+	{
+		return { x + w / 2,y + h / 2 };
+	}
+};
