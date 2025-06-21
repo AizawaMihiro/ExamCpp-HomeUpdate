@@ -12,7 +12,7 @@ namespace {
 	//const float ENEMY_INIT_Y = ENEMY_IMAGE_HEIGHT - ENEMY_BASE_MARGIN;
 	const float ENEMY_INIT_X = 100;//èâä˙à íu
 	const float ENEMY_INIT_Y = 100;
-	const float BEAM_INETERVAL = 20.0f;
+	const float BEAM_INETERVAL = 25.0f;
 }
 
 Enemy::Enemy()
@@ -57,6 +57,7 @@ Enemy::~Enemy()
 	if (hImage_ == -1) {
 		DeleteGraph(hImage_);
 	}
+	hImage_ = -1;
 }
 
 void Enemy::Update()

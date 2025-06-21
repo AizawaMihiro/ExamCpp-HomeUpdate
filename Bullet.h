@@ -22,6 +22,6 @@ public:
     void SetPos(float x, float y);
     void SetFire(bool fired) { isFire_ = fired; }
     bool IsFire() { return isFire_; }
-    Rect GetRect() const { return { x_,y_,BULLET_IMAGE_WIDTH,BULLET_IMAGE_HEIGHT }; }
+    Rect GetRect() const { return { x_,y_,imageSize_.x,imageSize_.y }; }
 };
 

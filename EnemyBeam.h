@@ -5,6 +5,7 @@ class EnemyBeam :
     public GameObject
 {
     int hImage_;
+    float x_, y_;
     Point pos_;
     float speed_;
     Point imageSize_;
@@ -22,6 +23,6 @@ public:
     void SetPos(const Point& pos) { pos_ = pos; }
     void SetFire(bool fired) { isFire_ = fired; }
     bool IsFire() { return isFire_; }
-    Rect GetRect() const { return { pos_.x,pos_.y,BULLET_IMAGE_WIDTH,BULLET_IMAGE_HEIGHT }; }
+    Rect GetRect() const { return { x_,y_,BULLET_IMAGE_WIDTH,BULLET_IMAGE_HEIGHT }; }
 };
 

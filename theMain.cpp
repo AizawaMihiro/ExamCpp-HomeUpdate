@@ -36,16 +36,6 @@ void DxInit()
 	SetDrawScreen(DX_SCREEN_BACK);
 }
 
-void MyGame()
-{
-
-	/*DrawFormatString(100, 100, GetColor(0, 0, 0), "ウィンドウのテスト");
-	static int timer = 0;
-	timer++;
-	DrawFormatString(100, 150, GetColor(0, 0, 0), "%010d", timer);*/
-	//中央縦線（テスト用）
-	//DrawLine(WIN_WIDTH / 2, 0, WIN_WIDTH/2, WIN_HEIGHT, GetColor(0, 0, 0), 1);
-}
 
 
 
@@ -141,6 +131,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				it++;
 			}
 		}
+
+		DrawLine(WIN_WIDTH / 2, 0, WIN_WIDTH / 2, WIN_HEIGHT, GetColor(255, 255, 255));
 		
 
 		ScreenFlip();

@@ -14,7 +14,7 @@ EnemyBeam::EnemyBeam()
 }
 
 EnemyBeam::EnemyBeam(float x, float y)
-	:GameObject(), hImage_(-1), pos_({ x,y }), speed_(BEAM_INIT_SPEED), isFire_(true),
+	:GameObject(), hImage_(-1), x_(x), y_(y), pos_({ x,y }), speed_(BEAM_INIT_SPEED), isFire_(true),
 	imageSize_({ BEAM_IMAGE_WIDTH,BEAM_IMAGE_HEIGHT })
 {
 	hImage_ = LoadGraph("Assets/EnemyBeam.png");
@@ -22,7 +22,7 @@ EnemyBeam::EnemyBeam(float x, float y)
 }
 
 EnemyBeam::EnemyBeam(Point pos)
-	:GameObject(), hImage_(-1), pos_(pos), speed_(BEAM_INIT_SPEED), isFire_(true),
+	:GameObject(), hImage_(-1), x_(pos.x), y_(pos.y), pos_(pos), speed_(BEAM_INIT_SPEED), isFire_(true),
 	imageSize_({ BEAM_IMAGE_WIDTH,BEAM_IMAGE_HEIGHT })
 {
 	hImage_ = LoadGraph("Assets/EnemyBeam.png");
