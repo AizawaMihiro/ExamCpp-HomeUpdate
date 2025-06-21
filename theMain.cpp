@@ -56,7 +56,26 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	prevTime = GetNowCount();
 
 	Stage stage;
-	State GameState = GAME;
+	TitleScene* title = new TitleScene();
+	GameScene* game = new GameScene();
+	OverScene* over = new OverScene();
+	State GameState = TITLE;
+
+	switch (GameState)
+	{
+	case State::TITLE:
+		title->SetTitle(true);
+		break;
+	case State::GAME:
+		game->SetGame(true);
+		break;
+	case State::OVER:
+		over->SetOver(true);
+		break;
+	case State::MUX_STATE:
+	default:
+		break;
+	}
 
 	while (true)
 	{
@@ -71,10 +90,25 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		switch (GameState)
 		{
 		case State::TITLE:
+			if (!title->GetTitle())
+			{
+				GameState = GAME;
+				game->SetGame(true);
+			}
 			break;
 		case State::GAME:
+			if (!game->GetGame())
+			{
+				GameState = OVER;
+				over->SetOver(true);
+			}
 			break;
 		case State::OVER:
+			if (!over->GetOver())
+			{
+				GameState = TITLE;
+				title->SetTitle(true);
+			}
 			break;
 		case State::MUX_STATE:
 		default:

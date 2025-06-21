@@ -33,23 +33,6 @@ Enemy::Enemy(int id, ETYPE type)
 	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0),ID_(id),type_(type),
 	imageSize_({ ENEMY_IMAGE_WIDTH ,ENEMY_IMAGE_HEIGHT }), moveTime_(0)
 {
-	/*switch (type)
-	{
-	case LOW:
-		hImage_ = LoadGraph("Assets\\tiny_ship10.png");
-		break;
-	case MID:
-		hImage_ = LoadGraph("Assets\\tiny_ship16.png");
-		break;
-	case HIGH:
-		hImage_ = LoadGraph("Assets\\tiny_ship18.png");
-		break;
-	case BOSS:
-		hImage_ = LoadGraph("Assets\\tiny_ship9.png");
-		break;
-	default:
-		break;
-	}*/
 	std::string imagePath[MAX_TYPE] = {
 		"Assets\\tiny_ship10.png",
 		"Assets\\tiny_ship16.png",

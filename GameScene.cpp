@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "EnemyBeam.h"
+#include "Input.h"
 
 namespace {
 	const int ENEMY_COL_SIZE = 10;
@@ -23,7 +24,9 @@ namespace {
 }
 
 GameScene::GameScene()
+	:GameObject(),nowGame(false)
 {
+	AddGameObject(this);
 	player_ = new Player();
 	enemy_ = std::vector<Enemy*>(ENEMY_NUM);
 	for (int i = 0; i < ENEMY_NUM; i++) {
@@ -43,42 +46,52 @@ GameScene::~GameScene()
 
 void GameScene::Update()
 {
-	std::vector<Bullet*> bullets = player_->GetAllBullets();
-	std::vector<EnemyBeam*> beams;
-	for (auto& e : enemy_)
+	if (nowGame)
 	{
-		beams = e->GetAllBeams();
-	}
-	for (auto& e : enemy_)
-	{
-		for (auto& b : bullets)
+		std::vector<Bullet*> bullets = player_->GetAllBullets();
+		std::vector<EnemyBeam*> beams;
+		for (auto& e : enemy_)
 		{
-			if (b->IsFire() && e->IsAlive())
+			beams = e->GetAllBeams();
+		}
+		for (auto& e : enemy_)
+		{
+			for (auto& b : bullets)
 			{
-				if (IntersectRect(e->GetRect(), b->GetRect())) {
+				if (b->IsFire() && e->IsAlive())
+				{
+					if (IntersectRect(e->GetRect(), b->GetRect())) {
+						b->SetFire(false);
+						e->SetAlive(false);
+						//new Effect(e->GetPos());
+					}
+				}
+			}
+		}
+		for (auto& b : beams)
+		{
+			if (b->IsFire() && player_->IsAlive())
+			{
+				if (IntersectRect(player_->GetRect(), b->GetRect())) {
 					b->SetFire(false);
-					e->SetAlive(false);
+					player_->SetAlive(false);
+					nowGame = false;
 					//new Effect(e->GetPos());
 				}
 			}
 		}
+
+		
 	}
-	for (auto& b : beams)
-	{
-		if (b->IsFire() && player_->IsAlive())
-		{
-			if (IntersectRect(player_->GetRect(), b->GetRect())) {
-				b->SetFire(false);
-				player_->SetAlive(false);
-				//new Effect(e->GetPos());
-			}
-		}
-	}
+	
 }
 
 void GameScene::Draw()
 {
+	if (nowGame)
+	{
 
+	}
 }
 
 bool GameScene::GetGame()
